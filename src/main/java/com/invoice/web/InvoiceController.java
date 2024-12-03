@@ -1,6 +1,5 @@
 package com.invoice.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,11 +14,14 @@ import com.invoice.process.InvoiceService;
 @RestController
 @RequestMapping(value = "/InvoiceApp")
 public class InvoiceController {
-	@Autowired
-	private InvoiceService invoiceService;
+	private final InvoiceService invoiceService;
+
+	InvoiceController(InvoiceService invoiceService) {
+		this.invoiceService = invoiceService;
+	}
 
 	@PostMapping("/CreateInvoice")
-	private ResponseEntity<InvoiceRes> creatingInvoice(@RequestBody InvoiceReq invoice) {
+	public ResponseEntity<InvoiceRes> creatingInvoice(@RequestBody InvoiceReq invoice) throws Exception {
 		InvoiceRes invoiceRes = invoiceService.process(invoice);
 		return new ResponseEntity<>(invoiceRes, HttpStatus.CREATED);
 	}

@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class BillingHeader {
 	private String callerName;
-	private Long billingId;
+	private int billingId;
 }

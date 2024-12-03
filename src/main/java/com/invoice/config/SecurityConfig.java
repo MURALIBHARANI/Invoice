@@ -40,8 +40,9 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationProvider authenticationProvider)
 			throws Exception {
 		return http
-				.authorizeHttpRequests(authz -> authz.requestMatchers("/auth/generateToken", "/auth/register")
-						.permitAll().requestMatchers("/auth/hello","/InvoiceApp/CreateInvoice").authenticated())
+				.authorizeHttpRequests(authz -> authz
+						.requestMatchers("/auth/generateToken", "/auth/register", "/h2-console").permitAll()
+						.requestMatchers("/auth/hello", "/InvoiceApp/CreateInvoice").authenticated())
 				.httpBasic(withDefaults()).csrf(csrf -> csrf.disable())
 				.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authenticationProvider(authenticationProvider)

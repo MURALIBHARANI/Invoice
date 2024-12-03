@@ -4,5 +4,5 @@ import com.invoice.model.InvoiceReq;
 import com.invoice.model.InvoiceRes;
 
 public interface InvoiceService {
-	InvoiceRes process(InvoiceReq invoicereq);
+	InvoiceRes process(InvoiceReq invoicereq) throws Exception;
 }

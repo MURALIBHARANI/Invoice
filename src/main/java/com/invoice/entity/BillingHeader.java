@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BillingHeader {
 	@Id
-	private Long billingId;
+	private int billingId;
 	private String callerName;
+	private String invoiceCode;
 
 }
